@@ -5,7 +5,7 @@ module BoJack
     class Size < BoJack::Commands::Command
       def validate; end
 
-      def perform(socket, memory, params)
+      def perform(memory, params)
         "#{memory.size}"
       end
     end

@@ -17,7 +17,7 @@ describe BoJack::Memory do
         memory.read("diane").should eq("nguyen")
       end
     end
-    
+
     context "an invalid key" do
       it "raises invalid key error" do
         expect_raises {
@@ -26,7 +26,7 @@ describe BoJack::Memory do
       end
     end
   end
-  
+
   context "when writing" do
     it "writes the key, value" do
       value = memory.write("princess", "carolyn")
@@ -54,7 +54,7 @@ describe BoJack::Memory do
           memory.delete("princess")
         }
       end
-    end 
+    end
   end
 
   context "when reseting" do

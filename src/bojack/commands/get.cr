@@ -7,7 +7,7 @@ module BoJack
         required(:key)
       end
 
-      def perform(socket, memory, params)
+      def perform(memory, params)
         key = params[:key].to_s
         data = memory.read(key)
 

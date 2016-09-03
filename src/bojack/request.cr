@@ -7,6 +7,7 @@ require "./memory"
 module BoJack
   class Request
     @logger : ::Logger = BoJack::Logger.instance
+
     def initialize(@body : String, @socket : TCPSocket, @memory : BoJack::Memory(String, Array(String))); end
 
     def perform
@@ -14,10 +15,10 @@ module BoJack
       params = parse(@body)
       command = BoJack::Command.from(params[:command])
 
-      response = command.run(@socket, @memory, params)
+      response = command.run(@memory, params)
 
       @socket.puts(response)
-    rescue e
+    rescue e : BoJack::Exceptions::Runtime
       message = "error: #{e.message}"
       @logger.error(message)
       @socket.puts(message)

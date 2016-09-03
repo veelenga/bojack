@@ -56,9 +56,13 @@ module BoJack
     private def spawn_channel
       spawn do
         loop do
-          if request = @channel.receive
-            request.perform
-          end
+            if request = @channel.receive
+              begin
+                request.perform
+              rescue e : BoJack::Commands::CloseSignal
+                #@logger.info("#{request.socket.remote_address} disconnected")
+              end
+            end
         end
       end
     end

@@ -5,7 +5,7 @@ module BoJack
     class Ping < BoJack::Commands::Command
       def validate; end
 
-      def perform(socket, memory, params)
+      def perform(memory, params)
         "pong"
       end
     end
