@@ -12,6 +12,7 @@ class MyAction
     @@counter
   end
 end
+
 describe BoJack::EventLoop::Channel do
   it "consumes the channel" do
     channel = Channel::Unbuffered(MyAction).new

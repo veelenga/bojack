@@ -9,10 +9,12 @@ module BoJack
       def start
         spawn do
           loop do
-            message = @socket.gets
-            break unless message
+            begin
+              message = @socket.gets
+              break unless message
 
-            @channel.send(BoJack::Request.new(message, @socket))
+              @channel.send(BoJack::Request.new(message, @socket))
+            end
           end
         end
       end

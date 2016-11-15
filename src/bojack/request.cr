@@ -16,6 +16,9 @@ module BoJack
       response = command.run(@socket, params)
 
       @socket.puts(response)
+    rescue e : BoJack::Exceptions::CloseConnection
+      puts "FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+      @socket.close
     rescue e
       message = "error: #{e.message}"
       @logger.error(message)

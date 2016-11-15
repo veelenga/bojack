@@ -1,3 +1,4 @@
+require "../exceptions"
 require "./command"
 
 module BoJack
@@ -6,9 +7,7 @@ module BoJack
       def validate; end
 
       def perform(socket, memory, params)
-        socket.close
-
-        "closing..."
+        raise BoJack::Exceptions::CloseConnection.new("Close command called")
       end
     end
   end

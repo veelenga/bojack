@@ -1,6 +1,7 @@
 require "socket"
 require "../logger"
 require "../request"
+require "../exceptions"
 require "./message"
 
 module BoJack
